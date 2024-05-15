@@ -1,0 +1,278 @@
+.hero-localinfoOverlay{
+    padding: 65px 0;
+}
+.localinfo-text{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 0 auto;
+    width: 91%;
+    margin-bottom: 30px;
+}
+.location-title{
+    font-family: $heading-font;
+    margin-left: 10px;
+}
+.location-textimg{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 93%;
+    margin: 5px auto 0;
+    font-family: $text-font;
+}
+.location-text{
+    margin-bottom: 15px;
+}
+.locationimg{
+    margin-bottom: 20px;
+}
+.historical-landtitle{
+    font-family: $heading-font;
+    margin-left: 10px;
+}
+.historical-land{
+    font-family: $heading-font;
+    margin-bottom: 10px;
+}
+.historical-landtextimg{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 93%;
+    margin: 5px auto 0;
+    font-family: $text-font;
+}
+.historical-landtext{
+    margin-bottom: 15px;
+}
+.historical-landimg{
+    margin-bottom: 20px;
+}
+
+.outdoor-title{
+    font-family: $heading-font;
+    margin-left: 10px;
+}
+.outdoor-textimg{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 93%;
+    margin: 5px auto 0;
+    font-family: $text-font;
+}
+.outdoor-text{
+    margin-bottom: 15px;
+}
+.outdoor-img{
+    margin-bottom: 20px;
+}
+
+.wildlifewatch-title{
+    font-family: $heading-font;
+    margin-left: 10px;
+}
+.wildlifewatch-textimg{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 93%;
+    margin: 5px auto 20px;
+    font-family: $text-font;
+}
+.wildlifewatch-text{
+    margin-bottom: 15px;
+}
+.wildlifewatch-img{
+    margin-bottom: 20px;
+}
+
+@media (min-width: 426px) and (max-width: 834px){
+    .hero-localinfoOverlay{
+        padding: 65px 0;
+    }
+    .localinfo-text{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        margin: 0 auto;
+        width: 91%;
+        margin-bottom: 30px;
+    }
+    .location-title{
+        font-family: $heading-font;
+        margin-left: 25px;
+    }
+    .location-textimg{
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        width: 93%;
+        margin: 5px auto 0;
+        font-family: $text-font;
+    }
+    .location-text{
+        margin-right: 15px;
+    }
+    .locationimg{
+        margin-bottom: 20px;
+        width: 60%;
+    }
+    .historical-landtitle{
+        font-family: $heading-font;
+        margin-left: 25px;
+    }
+    .historical-land{
+        font-family: $heading-font;
+        margin-bottom: 10px;
+    }
+    .historical-landtextimg{
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        width: 93%;
+        margin: 5px auto 0;
+        font-family: $text-font;
+    }
+    .historical-landtext{
+        margin-right: 15px;
+    }
+    .historical-landimg{
+        margin-bottom: 20px;
+        width: 60%;
+    }
+    
+    .outdoor-title{
+        font-family: $heading-font;
+        margin-left: 25px;
+    }
+    .outdoor-textimg{
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        width: 93%;
+        margin: 5px auto 0;
+        font-family: $text-font;
+    }
+    .outdoor-text{
+        margin-right: 15px;
+    }
+    .outdoor-img{
+        margin-bottom: 20px;
+        width: 60%;
+    }
+    
+    .wildlifewatch-title{
+        font-family: $heading-font;
+        margin-left: 25px;
+    }
+    .wildlifewatch-textimg{
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        width: 93%;
+        margin: 5px auto 20px;
+        font-family: $text-font;
+    }
+    .wildlifewatch-text{
+        margin-right: 15px;
+    }
+    .wildlifewatch-img{
+        margin-bottom: 20px;
+        width: 60%;
+    }
+}
+
+@media (min-width: 835px) and (max-width: 2560px){
+    .localinfo-text{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        margin: 0 auto;
+        width: 40%;
+        margin-bottom: 30px;
+    }
+    .location-title{
+        font-family: $heading-font;
+        margin-left: 25px;
+    }
+    .location-textimg{
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        width: 95%;
+        margin: 5px auto 0;
+        font-family: $text-font;
+    }
+    .location-text{
+        margin-right: 15px;
+    }
+    .locationimg{
+        margin-bottom: 20px;
+        width: 60%;
+    }
+    .historical-landtitle{
+        font-family: $heading-font;
+        margin-left: 25px;
+    }
+    .historical-land{
+        font-family: $heading-font;
+        margin-bottom: 10px;
+    }
+    .historical-landtextimg{
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        width: 95%;
+        margin: 5px auto 0;
+        font-family: $text-font;
+    }
+    .historical-landtext{
+        margin-right: 15px;
+    }
+    .historical-landimg{
+        margin-bottom: 20px;
+        width: 60%;
+    }
+    
+    .outdoor-title{
+        font-family: $heading-font;
+        margin-left: 25px;
+    }
+    .outdoor-textimg{
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        width: 95%;
+        margin: 5px auto 0;
+        font-family: $text-font;
+    }
+    .outdoor-text{
+        margin-right: 15px;
+    }
+    .outdoor-img{
+        margin-bottom: 20px;
+        width: 60%;
+    }
+    
+    .wildlifewatch-title{
+        font-family: $heading-font;
+        margin-left: 25px;
+    }
+    .wildlifewatch-textimg{
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        width: 95%;
+        margin: 5px auto 20px;
+        font-family: $text-font;
+    }
+    .wildlifewatch-text{
+        margin-right: 15px;
+    }
+    .wildlifewatch-img{
+        margin-bottom: 20px;
+        width: 60%;
+    }
+}

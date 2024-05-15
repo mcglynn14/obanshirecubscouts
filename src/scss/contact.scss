@@ -1,0 +1,65 @@
+.hero-contactoverlay{
+    padding: 40px 0;
+}
+.contact-formdiv{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 10px;
+    font-family: $heading-font;
+}
+.contact-formtitle{
+    margin-bottom: 10px;
+}
+.contact-form{
+    font-family: $text-font;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+.contact-formtext{
+    margin-bottom: 10px;
+}
+.contact-forminput{
+    padding: 2px 0;
+    margin-bottom: 20px;
+    border-radius: 26px;
+    border: 1px solid $black;
+}
+.contact-formmessage{
+    padding: 41px 5px;
+}
+.contact-formbtn{
+    margin-bottom: 20px;
+}
+.email-phone{
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    font-family: $heading-font;
+}
+.email-title{
+    margin-bottom: 10px;
+}
+.email-text{
+    font-family: $text-font;
+    margin-bottom: 10px;
+}
+.phone-title{
+    margin-bottom: 10px;
+}
+.phone-text{
+    font-family: $text-font;
+    margin-bottom: 20px;
+}
+.map{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 30px;
+}
+.map iframe{
+    width: 281px;
+}

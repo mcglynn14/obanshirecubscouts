@@ -1,0 +1,185 @@
+.hero-badgesoverlay{
+    padding: 40px 0;
+}
+
+.search-change-badges{
+    margin-top: 10px;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+}
+.input-container{
+    position: relative;
+}
+.input-container input[type="text"]{
+    padding: 4px;
+    border-radius: 25px;
+    border: 1px solid $black;
+}
+.input-container .search-button{
+    position: absolute;
+    right: 4px;
+    top: 4px;
+    padding: 0px 0px;
+    border: 2px solid #0D47A1;
+    background-color: #0D47A1;
+    color: #fff;
+    text-align: center;
+    cursor: pointer;
+    border-radius: 30px;
+    height: 73%;
+    width: 20px;
+}
+.change-badges{
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    flex-wrap: wrap;
+    margin-top: 10px;
+    margin: 10px 0 25px;
+}
+.badges-btn{
+    padding: 4px 20px;
+    height: 32px;
+    border: 2px solid $spacebattleblue;
+    background-color: $transparent;
+    color: $spacebattleblue;
+    font-family: $heading-font;
+    font-weight: 500;
+}
+.badges-active{
+    background-color: $spacebattleblue;
+    color: $white;
+    font-weight: 600;
+}
+.badges{
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin-bottom: 20px;
+}
+.cub-badges{
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 20px;
+    margin-top: 20px;
+}
+.scout-badges{
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 20px;
+    margin-top: 20px;
+}
+.card-1{
+    text-align: center;
+    padding-top: 33px;
+    width: 227px;
+    height: 245px;
+    color: $white;
+    font-family: $heading-font;
+    background-color: $liberalistblue;
+    border-radius: 26px;
+}
+.card-2{
+    text-align: center;
+    padding-top: 33px;
+    width: 227px;
+    height: 245px;
+    color: $black;
+    font-family: $heading-font;
+    background-color: $pantoneyellow;
+    border-radius: 26px;
+}
+.card-3{
+    text-align: center;
+    padding-top: 33px;
+    width: 227px;
+    height: 245px;
+    color: $white;
+    font-family: $heading-font;
+    background-color: $maldives;
+    border-radius: 26px;
+}
+.card-4{
+    text-align: center;
+    padding-top: 33px;
+    width: 227px;
+    height: 245px;
+    color: $white;
+    font-family: $heading-font;
+    background-color: $verditer;
+    border-radius: 26px;
+}
+.card-5{
+    text-align: center;
+    padding-top: 33px;
+    width: 227px;
+    height: 245px;
+    color: $white;
+    font-family: $heading-font;
+    background-color: $orangered;
+    border-radius: 26px;
+}
+.card-6{
+    text-align: center;
+    padding-top: 33px;
+    width: 227px;
+    height: 245px;
+    color: $white;
+    font-family: $heading-font;
+    background-color: $spacebattleblue;
+    border-radius: 26px;
+}
+.card-7{
+    text-align: center;
+    padding-top: 33px;
+    width: 227px;
+    height: 245px;
+    color: $white;
+    font-family: $heading-font;
+    background-color: $green;
+    border-radius: 26px;
+}
+.card-8{
+    text-align: center;
+    padding-top: 33px;
+    width: 227px;
+    height: 245px;
+    color: $white;
+    font-family: $heading-font;
+    background-color: $liberalistblue;
+    border-radius: 26px;
+}
+.card-9{
+    text-align: center;
+    padding-top: 33px;
+    width: 227px;
+    height: 245px;
+    color: $black;
+    font-family: $heading-font;
+    background-color: $pantoneyellow;
+    border-radius: 26px;
+}
+.card-10{
+    text-align: center;
+    padding-top: 33px;
+    width: 227px;
+    height: 245px;
+    color: $white;
+    font-family: $heading-font;
+    background-color: $maldives;
+    border-radius: 26px;
+}
+.badges-cardimg{
+    width: 60%;
+    margin-bottom: 10px;
+}
+.cub-badgestitle{
+    font-family: $heading-font;
+}
+.scout-badgestitle{
+    font-family: $heading-font;
+}

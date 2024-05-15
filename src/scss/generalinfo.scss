@@ -1,0 +1,97 @@
+.hero-generalinfoOverlay{
+    padding: 53px 0;
+}
+.aboutus{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-family: $heading-font;
+    text-align: center;
+    margin: 10px 15px 20px;
+}
+.aboutus-text{
+    font-family: $text-font;
+    padding: 15px 0;
+    width: 80%;
+}
+
+.our-mission{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-family: $heading-font;
+    text-align: center;
+    margin: 10px 15px 20px;
+}
+.our-missiontext{
+    font-family: $text-font;
+    padding: 15px 0;
+    width: 80%;
+}
+
+.whatwedo{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-family: $heading-font;
+    text-align: center;
+    margin: 10px 15px 20px;
+}
+.whatwedo-text{
+    font-family: $text-font;
+    padding: 15px 0;
+    width: 80%;
+}
+
+.getinvoled{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-family: $heading-font;
+    text-align: center;
+    margin: 10px 15px 20px;
+}
+.getinvoled-text{
+    font-family: $text-font;
+    padding: 15px 0;
+    width: 80%;
+}
+
+.applyhelper{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-family: $heading-font;
+    text-align: center;
+    margin: 10px 15px 20px;
+}
+.applyhelper-text{
+    font-family: $text-font;
+    padding: 15px 0;
+    width: 80%;
+}
+
+.disclosure{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-family: $heading-font;
+    text-align: center;
+    margin: 10px 15px 20px;
+}
+.disclosure-text{
+    font-family: $text-font;
+    padding: 15px 0;
+    width: 80%;
+}
+
+@media (min-width: 426px) and (max-width: 834px){
+    .hero-generalinfoOverlay{
+        padding: 53px 0;
+    }
+    
+}
+
+@media (min-width: 835px) and (max-width: 2560px){
+    
+}

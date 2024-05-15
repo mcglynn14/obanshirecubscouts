@@ -1,0 +1,159 @@
+.headerinner{
+    display: flex;
+    align-items: center;
+    gap: 65px;
+    justify-content: space-between;
+}  
+.navbartoggle{
+    display: flex;
+    justify-content: center;
+    position: relative;
+    cursor: pointer;
+    font-size: 2rem;
+    height: 10%;
+    border-radius: 30px;
+    padding: 14px 30px;
+    transition: height 0.5s ease-in-out; 
+    overflow: hidden;
+}
+button{
+    background: none;
+    border: none;
+    padding: 0;
+}
+.navbartoggle .fa-bars{
+    color: $black;
+    display: block;
+    font-size: 2rem;
+}
+.navbartoggle .fa-X{
+    color: $black;
+    display: none;
+    font-size: 2rem;
+}
+.navbartoggle .open-toggle{
+    display: none;
+}
+.navbartoggle .close-toggle{
+    display: inline;
+}  
+nav{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    transition: 0.5s ease-in-out;
+    height: 10%;
+    overflow: hidden;
+}  
+.ul-links{
+    display: none;
+    list-style: none;
+}  
+a{
+    text-decoration: none;
+    color: $black;
+    padding-bottom: 25px;
+}
+.logo img{
+    width: 155px;
+    height: 85px;
+    margin-left: 14px;
+}  
+.active{
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    height: auto;
+    font-family: $text-font;
+    transition: height 0.5s ease-in-out;
+}
+
+@media (min-width: 835px) and (max-width: 2560px){
+    header{
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+    .headerinner{
+        display: flex;
+        align-items: center;
+        gap: 65px;
+        justify-content: space-between;
+    }  
+    .navbartoggle{
+        display: none;
+        position: relative;
+        cursor: pointer;
+        font-size: 2rem;
+        height: 10%;
+        border-radius: 30px;
+        padding: 14px 30px;
+        transition: height 0.5s ease-in-out; 
+        overflow: hidden;
+    }
+    button{
+        background: none;
+        border: none;
+        padding: 0;
+    }
+    .navbartoggle .fa-bars{
+        color: $black;
+        display: none;
+        font-size: 2rem;
+    }
+    .navbartoggle .fa-X{
+        color: $black;
+        display: none;
+        font-size: 2rem;
+    }
+    .navbartoggle .open-toggle{
+        display: none;
+    }
+    .navbartoggle .close-toggle{
+        display: inline;
+    }  
+    nav{
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        transition: 0.5s ease-in-out;
+        height: 10%;
+        overflow: hidden;
+    }  
+    .ul-links{
+        display: flex;
+        list-style: none;
+        gap: 25px;
+        margin-right: 15px;
+        font-family: $text-font;
+        font-weight: 400;
+    }
+    .nav-links:hover::after{
+        content: '';
+        display: block;
+        border: 2px solid $spacebattleblue;
+    }  
+    a{
+        text-decoration: none;
+        color: $black;
+        padding-bottom: 0;
+    }
+    .logo img{
+        width: 155px;
+        height: 85px;
+        margin-left: 14px;
+    }  
+    .active{
+        display: flex;
+        justify-content: center;
+        flex-direction: row;
+        align-items: center;
+        width: 100%;
+        height: auto;
+        font-family: $text-font;
+        transition: height 0.5s ease-in-out;
+    }
+}
+  

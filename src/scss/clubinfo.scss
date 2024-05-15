@@ -1,0 +1,12 @@
+.clubinfo-card{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 8px 5px;
+    margin: 0 auto 20px;
+    background-color: $maldives;
+    color: $white;
+    font-family: $heading-font;
+    width: 48%;
+}

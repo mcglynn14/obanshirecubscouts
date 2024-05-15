@@ -1,0 +1,23 @@
+.readytojoin-section{
+    color: $black;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.readytojoin-title{
+    font-family: $heading-font;
+    padding: 10px 5px;
+    margin: 10px 0;
+}
+.readytojoin-text1{
+    margin: 0 auto 30px;
+    padding: 0 35px;
+}
+.readytojoin-text2{
+    margin: 0 auto 30px;
+    padding: 0 35px;
+}
+.readytojoin-img{
+    width: 70%;
+    margin: 0 auto 20px;
+}

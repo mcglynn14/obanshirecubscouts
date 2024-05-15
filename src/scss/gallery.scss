@@ -1,0 +1,34 @@
+.hero-galleryoverlay{
+    padding: 40px 0;
+}
+.gallery-images{
+    width: 100%;
+    padding: 0 20px;
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    flex-wrap: wrap;
+    margin: 25px 0;
+}
+.gallery-images .gallery-imgs{
+    display: flex;
+}
+.gallery-imgs img{
+    width: 300px;
+    height: 50vh;
+}
+.gallery-imgs:last-child{
+    margin-bottom: 50px;
+}
+
+@media (min-width: 426px) and (max-width: 834px){
+    .gallery-images{
+        flex-direction: row;
+    }
+}
+
+@media (min-width: 835px) and (max-width: 2560px){
+    .gallery-images .gallery-imgs{
+        width: fit-content;
+    }
+}
