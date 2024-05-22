@@ -1,33 +1,17 @@
 import React, { useEffect, useState } from 'react';
-import axios from 'axios'; // Import Axios
+import { Link } from 'react-router-dom'; // Make sure you have react-router-dom installed
 import Nav from '../../components/Nav';
 import Hero from '../../components/Hero';
 import Footer from '../../components/Footer';
+import Userinformation from '../../components/Userinformation';
+
 
 const Viewhelpers = () => {
-  const [helpers, setHelpers] = useState([]);
+  const user = Userinformation();
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
+  const [showStoryboard, setShowStoryboard] = useState(false); // State to control storyboard visibility
 
-  useEffect(() => {
-    const fetchHelpersData = async () => {
-      try {
-        const response = await axios.get('/api/helpers'); // Use Axios to make GET request
-        console.log('Response data:', response.data); // Log response data to inspect its structure
-        if (Array.isArray(response.data)) {
-          setHelpers(response.data);
-        } else {
-          throw new Error('Response data is not an array');
-        }
-        setLoading(false);
-      } catch (error) {
-        setError(error);
-        setLoading(false);
-      }
-    };
-
-    fetchHelpersData();
-  }, []);
 
   if (loading) {
     return <p>Loading...</p>;
@@ -44,28 +28,35 @@ const Viewhelpers = () => {
       </header>
       <main>
         <Hero title="View helpers" heroviewhelperoverlay='hero-viewhelperoverlay' />
-        <div className="container">
+        
+        {/* User Information Section */}
+        {user && (
+          <div className="container">
           <table>
             <thead>
               <tr>
-                <th>ID</th>
                 <th>Name</th>
-                <th>Email</th>
-                <th>Role</th>
+                <th>Date Of Birth</th>
+                <th>Phone Number</th>
+                <th>Availibility</th>
               </tr>
             </thead>
             <tbody>
-              {helpers.map(helper => (
-                <tr key={helper._id}>
-                  <td>{user._id}</td>
-                  <td>{helper.name}</td>
-                  <td>{helper.email}</td>
-                  <td>{helper.usertype}</td>
+              {user => (
+                <tr>
+                  <td>{user.name}</td>
+                  <td>{user.dob}</td>
+                  <td>{user.phonenumber}</td>
+                  <td>{user.availibility}</td>
                 </tr>
-              ))}
+              )}
             </tbody>
           </table>
         </div>
+        )}
+
+        Helpers Table Section
+        
       </main>
       <Footer />
     </>

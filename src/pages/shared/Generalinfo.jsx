@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import Nav from '../../components/Nav';
 import Hero from '../../components/Hero';
 import Footer from '../../components/Footer';
@@ -34,6 +35,7 @@ const Generalinfo = () => {
             <section className="disclosure">
                 <h2 className="disclosure-title">How to apply for helper</h2>
                 <p className="disclosure-text">you will find the form to apply to be a helper on the parent dashboard. This form will gather basic information about you, including your contact details, any previous experience with scouting or youth organizations and availability.</p>
+                
             </section>
         </main>
         <Footer />
