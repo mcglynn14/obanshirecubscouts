@@ -8,17 +8,12 @@ import Userinformation from '../../components/Userinformation';
 
 const Viewhelpers = () => {
   const user = Userinformation();
-  const [loading, setLoading] = useState(true);
-  const [error, setError] = useState(null);
-  const [showStoryboard, setShowStoryboard] = useState(false); // State to control storyboard visibility
+  console.log('user:', user);
 
 
-  if (loading) {
-    return <p>Loading...</p>;
-  }
-
-  if (error) {
-    return <p>Error loading helpers: {error.message}</p>;
+  if (!user || !user.usertype === 'helper') {
+    // Render a loading state or handle the case where user or department_id is not available
+    return <div>Loading...</div>;
   }
 
   return (
@@ -54,8 +49,6 @@ const Viewhelpers = () => {
           </table>
         </div>
         )}
-
-        Helpers Table Section
         
       </main>
       <Footer />
