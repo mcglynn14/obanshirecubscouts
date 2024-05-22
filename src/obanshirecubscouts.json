@@ -1,0 +1,192 @@
+{
+    "Users": {
+      "schema": {
+        "UserID": "INT",
+        "Username": "VARCHAR(50)",
+        "Password": "VARCHAR(50)",
+        "Email": "VARCHAR(100)",
+        "UserType": ["CubScout", "Parent", "Helper", "ScoutLeader"],
+        "Name": "VARCHAR(100)",
+        "PhoneNumber": "VARCHAR(20)",
+        "DateOfBirth": "DATE",
+        "ChildAgeGroup": ["Cub", "Scout"],
+        "ParentRelationship": ["Father", "Mother", "Guardian"]
+      },
+      "data": [
+        {
+          "UserID": 1,
+          "Username": "cubscout1",
+          "Password": "password1",
+          "Email": "cubscout1@example.com",
+          "UserType": "CubScout",
+          "Name": "John Doe",
+          "PhoneNumber": "123-456-7890",
+          "DateOfBirth": "2009-05-15",
+          "ChildAgeGroup": "Cub",
+          "ParentRelationship": null
+        },
+        {
+          "UserID": 2,
+          "Username": "cubscout2",
+          "Password": "password2",
+          "Email": "cubscout2@example.com",
+          "UserType": "CubScout",
+          "Name": "Jane Smith",
+          "PhoneNumber": "987-654-3210",
+          "DateOfBirth": "2010-07-20",
+          "ChildAgeGroup": "Scout",
+          "ParentRelationship": null
+        },
+        {
+          "UserID": 3,
+          "Username": "parent1",
+          "Password": "password3",
+          "Email": "parent1@example.com",
+          "UserType": "Parent",
+          "Name": "Alice Johnson",
+          "PhoneNumber": "555-123-4567",
+          "DateOfBirth": null,
+          "ChildAgeGroup": null,
+          "ParentRelationship": "Father"
+        },
+        {
+          "UserID": 4,
+          "Username": "helper1",
+          "Password": "password4",
+          "Email": "helper1@example.com",
+          "UserType": "Helper",
+          "Name": "Bob White",
+          "PhoneNumber": "999-888-7777",
+          "DateOfBirth": "1980-03-25",
+          "ChildAgeGroup": null,
+          "ParentRelationship": null
+        },
+        {
+          "UserID": 5,
+          "Username": "leader1",
+          "Password": "password5",
+          "Email": "leader1@example.com",
+          "UserType": "ScoutLeader",
+          "Name": "Tom Brown",
+          "PhoneNumber": "111-222-3333",
+          "DateOfBirth": "1975-12-10",
+          "ChildAgeGroup": null,
+          "ParentRelationship": null
+        }
+      ]
+    },
+    "Gallery": {
+      "schema": {
+        "ImageID": "INT",
+        "Title": "VARCHAR(100)",
+        "Description": "TEXT",
+        "ImageURL": "VARCHAR(255)",
+        "UploadedBy": "INT"
+      },
+      "data": [
+        {
+          "ImageID": 1,
+          "Title": "Campfire",
+          "Description": "Our campfire at the last camp.",
+          "ImageURL": "https://example.com/campfire.jpg",
+          "UploadedBy": 5
+        },
+        {
+          "ImageID": 2,
+          "Title": "Hiking Trip",
+          "Description": "Scouts hiking in the forest.",
+          "ImageURL": "https://example.com/hiking.jpg",
+          "UploadedBy": 5
+        },
+        {
+          "ImageID": 3,
+          "Title": "Crafting Session",
+          "Description": "Cub Scouts doing crafts.",
+          "ImageURL": "https://example.com/crafting.jpg",
+          "UploadedBy": 4
+        }
+      ]
+    },
+    "RegisterToBeHelper": {
+      "schema": {
+        "RequestID": "INT",
+        "UserID": "INT",
+        "Name": "VARCHAR(100)",
+        "PhoneNumber": "VARCHAR(20)",
+        "DateOfBirth": "DATE",
+        "Message": "TEXT",
+        "Availability": ["Full-Time", "Part-Time", "Weekends"],
+        "Experience": "TEXT",
+        "Status": ["Pending", "Approved", "Rejected"]
+      },
+      "data": [
+        {
+          "RequestID": 1,
+          "UserID": 1,
+          "Name": "John Doe",
+          "PhoneNumber": "123-456-7890",
+          "DateOfBirth": "2009-05-15",
+          "Message": "I want to volunteer as a helper.",
+          "Availability": "Full-Time",
+          "Experience": "Camping,Outdoor activities",
+          "Status": "Pending"
+        },
+        {
+          "RequestID": 2,
+          "UserID": 2,
+          "Name": "Jane Smith",
+          "PhoneNumber": "987-654-3210",
+          "DateOfBirth": "2010-07-20",
+          "Message": "I have experience in camping.",
+          "Availability": "Weekends",
+          "Experience": "Camping",
+          "Status": "Approved"
+        }
+      ]
+    },
+    "Helpers": {
+      "schema": {
+        "HelperID": "INT",
+        "UserID": "INT",
+        "Experience": "TEXT"
+      },
+      "data": [
+        {
+          "HelperID": 1,
+          "UserID": 4,
+          "Experience": "Experienced in outdoor activities and first aid."
+        },
+        {
+          "HelperID": 2,
+          "UserID": 2,
+          "Experience": "Has experience in guiding outdoor activities for kids."
+        }
+      ]
+    },
+    "Events": {
+      "schema": {
+        "EventID": "INT",
+        "Title": "VARCHAR(100)",
+        "Description": "TEXT",
+        "Date": "DATE",
+        "OrganizerID": "INT"
+      }
+    },
+    "Achievements": {
+      "schema": {
+        "AchievementID": "INT",
+        "UserID": "INT",
+        "AchievementName": "VARCHAR(100)",
+        "DateAchieved": "DATE"
+      }
+    },
+    "Attendance": {
+      "schema": {
+        "AttendanceID": "INT",
+        "UserID": "INT",
+        "EventID": "INT",
+        "Attended": "BOOLEAN"
+      }
+    }
+  }
+  

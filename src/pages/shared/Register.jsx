@@ -12,25 +12,36 @@ const Register = () => {
         password: '',
         dateOfBirth: '',
         username: '',
+        phoneNumber: '', // Added phone number field
         childChecked: false,
         parentChecked: false,
         cubChecked: false,
-        scoutChecked: false
+        scoutChecked: false,
+        helperChecked: false // Added helper checkbox field
     });
 
     const navigate = useNavigate();
 
-    const handleSubmit = (event) => {
+    const handleSubmit = async (event) => {
         event.preventDefault();
-        axios.post('http://localhost:8888/register', values)
-        .then(res => {
-            if(res.data.Status === "Success"){
+        try {
+            const res = await axios.post('http://localhost:5001/api/register', {
+                ...values,
+                userType: [
+                    values.childChecked ? 'child' : '',
+                    values.parentChecked ? 'parent' : '',
+                    values.helperChecked ? 'helper' : '',
+                ].filter(Boolean), // Filter out empty strings
+            });
+            if (res.status === 201) {
                 navigate('/login'); 
             } else {
-                alert("Error");
+                alert("Error: " + res.data.error);
             }
-        })
-        .catch(err => console.error(err));
+        } catch (err) {
+            console.error(err);
+            alert("Error: " + err.response?.data?.error || "Internal Server Error");
+        }
     };
 
     const handleInputChange = (event) => {
@@ -55,32 +66,51 @@ const Register = () => {
                     <div className="child-parentcheck">
                         <div className="child-check">
                             <label htmlFor="childCheckbox" className="child-text">Child</label>
-                            <input type="checkbox" name="childChecked" id="childCheckbox" className="child-checkbox" onChange={handleInputChange} />
+                            <input type="checkbox" name="childChecked" id="childCheckbox" className="child-checkbox" onChange={handleInputChange} checked={values.childChecked} />
                         </div>
                         <div className="parent-check">
                             <label htmlFor="parentCheckbox" className="parent-text">Parent</label>
-                            <input type="checkbox" name="parentChecked" id="parentCheckbox" className="parent-checkbox" onChange={handleInputChange} />
+                            <input type="checkbox" name="parentChecked" id="parentCheckbox" className="parent-checkbox" onChange={handleInputChange} checked={values.parentChecked} />
+                        </div>
+                        <div className="helper-check"> {/* Added helper checkbox */}
+                            <label htmlFor="helperCheckbox" className="helper-text">Helper</label>
+                            <input type="checkbox" name="helperChecked" id="helperCheckbox" className="helper-checkbox" onChange={handleInputChange} checked={values.helperChecked} />
                         </div>
                     </div>
                     <label htmlFor="nameInput" className="name-text">Name</label>
-                    <input type="text" className="name-input" name="name" id="nameInput" onChange={handleInputChange} />
+                    <input type="text" className="name-input" name="name" id="nameInput" onChange={handleInputChange} value={values.name} />
                     <label htmlFor="dateOfBirthInput" className="dateofbirth-text">Date of birth</label>
-                    <input type="date" id="dateOfBirthInput" className="dateofbirth-input" name="dateOfBirth" onChange={handleInputChange} />
-                    <label htmlFor="groupCubCheckbox" className="group-text">Group</label>
-                    <div className="group-check">
-                        <div className="group-cub">
-                            <label htmlFor="groupCubCheckbox" className="group-cubtext">Cub</label>
-                            <input type="checkbox" name="cubChecked" id="groupCubCheckbox" className="group-cubcheckbox" onChange={handleInputChange} />
-                        </div>
-                        <div className="group-scout">
-                            <label htmlFor="groupScoutCheckbox" className="group-scoutText">Scout</label>
-                            <input type="checkbox" name="scoutChecked" id="groupScoutCheckbox" className="group-scoutcheckbox" onChange={handleInputChange} />
-                        </div>
-                    </div>
+                    <input type="date" id="dateOfBirthInput" className="dateofbirth-input" name="dateOfBirth" onChange={handleInputChange} value={values.dateOfBirth} />
+                    
+                    {!values.parentChecked && (
+                        <>
+                            <label htmlFor="groupCubCheckbox" className="group-text">Group</label>
+                            <div className="group-check">
+                                <div className="group-cub">
+                                    <label htmlFor="groupCubCheckbox" className="group-cubtext">Cub</label>
+                                    <input type="checkbox" name="cubChecked" id="groupCubCheckbox" className="group-cubcheckbox" onChange={handleInputChange} checked={values.cubChecked} />
+                                </div>
+                                <div className="group-scout">
+                                    <label htmlFor="groupScoutCheckbox" className="group-scoutText">Scout</label>
+                                    <input type="checkbox" name="scoutChecked" id="groupScoutCheckbox" className="group-scoutcheckbox" onChange={handleInputChange} checked={values.scoutChecked} />
+                                </div>
+                            </div>
+                        </>
+                    )}
+                    
+                    {values.parentChecked && (
+                        <>
+                            <label htmlFor="emailInput" className="email-text">Email</label>
+                            <input type="email" className="email-input" name="email" id="emailInput" onChange={handleInputChange} value={values.email} />
+                            <label htmlFor="phoneNumberInput" className="phone-number-text">Phone Number</label>
+                            <input type="text" className="phone-number-input" name="phoneNumber" id="phoneNumberInput" onChange={handleInputChange} value={values.phoneNumber} />
+                        </>
+                    )}
+                    
                     <label htmlFor="usernameInput" className="username-text">Username</label>
-                    <input type="text" className="username-input" name="username" id="usernameInput" onChange={handleInputChange} />
+                    <input type="text" className="username-input" name="username" id="usernameInput" onChange={handleInputChange} value={values.username} />
                     <label htmlFor="passwordInput" className="password-text">Password</label>
-                    <input type="password" className="password-input" name="password" id="passwordInput" onChange={handleInputChange} />
+                    <input type="password" className="password-input" name="password" id="passwordInput" onChange={handleInputChange} value={values.password} />
                     <button type="submit" className="btn btn-register">Register</button>
                 </form>
             </main>

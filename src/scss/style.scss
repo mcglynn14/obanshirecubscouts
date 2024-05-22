@@ -66,24 +66,43 @@ footer{
 
 @import './hero.scss';
 
-@import './clubinfo.scss';
+@import './home/clubinfo.scss';
 
-@import './whyjoin.scss';
+@import './home/whyjoin.scss';
 
-@import './readytojoin.scss';
+@import './home/readytojoin.scss';
 
 @import './footer.scss';
 
-@import './gallery.scss';
+@import './gallery/gallery.scss';
 
-@import './badges.scss';
+@import './badges/badges.scss';
 
-@import './contact.scss';
+@import './contact/contact.scss';
 
-@import './localinfo.scss';
+@import './localinfo/localinfo.scss';
 
-@import './generalinfo.scss';
+@import './generalinfo/generalinfo.scss';
 
-@import './login.scss';
+@import './login/login.scss';
 
-@import './register.scss';
+@import './register/register.scss';
+
+@import './cubscouts/dashboard.scss';
+
+@import './parent/parentdashboard.scss';
+
+@import './helper/helperdashboard.scss';
+
+@import './scoutleader/scoutleaderdashboard.scss';
+
+@import './cubscouts/games.scss';
+
+@import './cubscouts//uploadimage.scss';
+
+@import './cubscouts/yourbadges.scss';
+
+@import './parent/registerhelper.scss';
+
+@import './helper/viewhelpers.scss';
+

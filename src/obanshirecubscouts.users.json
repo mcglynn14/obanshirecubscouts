@@ -1,0 +1,81 @@
+[{
+  "_id": {
+    "$oid": "664526b405c800a5a24b9c68"
+  },
+  "--v": 0,
+  "childagegroup": "Cub",
+  "email": "cubscout1@example.com\"",
+  "Name": "John Doe",
+  "parentrelationship": null,
+  "password": "$2a$10$1Yuf3O0fAT12YxHVIFz1xuPd7Xr5vWdBSg5S1IT.3YNO8CNH0Tz16",
+  "username": "cubscout1",
+  "dob": {
+    "$date": "2009-05-15T00:00:00.000Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "664527e305c800a5a24b9c6b"
+  },
+  "--v": 0,
+  "childagegroup": "Scout",
+  "email": "cubscout2@example.com",
+  "Name": "Jane Smith",
+  "parentrelationship": null,
+  "password": "password2",
+  "username": "cubscout2",
+  "dob": {
+    "$date": "2010-07-20T00:00:00.000Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "664528a205c800a5a24b9c6c"
+  },
+  "--v": 0,
+  "childagegroup": null,
+  "email": "parent1@example.com",
+  "Name": "Alice Johnson",
+  "parentrelationship": null,
+  "password": "password2",
+  "username": "parent1",
+  "dob": {
+    "$date": "2010-07-20T00:00:00.000Z"
+  },
+  "usertype": "Parent",
+  "phonenumber": "555-123-4567"
+},
+{
+  "_id": {
+    "$oid": "66452a5205c800a5a24b9c6d"
+  },
+  "--v": 0,
+  "childagegroup": null,
+  "email": "helper1@example.com",
+  "Name": "Bob White",
+  "parentrelationship": null,
+  "password": "password4",
+  "username": "helper1",
+  "dob": {
+    "$date": "1980-03-25T00:00:00.000Z"
+  },
+  "usertype": "Helper",
+  "phonenumber": "999-888-7777"
+},
+{
+  "_id": {
+    "$oid": "66452b5f05c800a5a24b9c6e"
+  },
+  "--v": 0,
+  "childagegroup": null,
+  "email": "leader1@example.com",
+  "Name": "Tom Brown",
+  "parentrelationship": null,
+  "password": "password5",
+  "username": "leader1",
+  "dob": {
+    "$date": "1975-12-10T00:00:00.000Z"
+  },
+  "usertype": "ScoutLeader",
+  "phonenumber": "111-222-3333"
+}]

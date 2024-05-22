@@ -1,0 +1,31 @@
+.hero-uploadimageoverlay{
+    padding: 53px 0;
+}
+.uploadimage{
+    margin: 30px 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+
+}
+.uploadimage-img{
+    width: 70%;
+    margin-bottom: 20px;
+}
+
+
+
+@media (min-width: 426px) and (max-width: 834px){
+    
+    
+}
+
+@media (min-width: 835px) and (max-width: 2560px){
+    .hero-uploadimageoverlay{
+        margin: 146px 15px 0;
+    }
+    .hero-overlay {
+        margin: 146px 15px 0;
+    }
+}

@@ -138,9 +138,40 @@ input[type="checkbox"].group-scoutcheckbox{
     border-radius: 5px;
     color: $white;
 }
+input[type="checkbox"].helper-checkbox{
+    appearance: none;
+    -webkit-appearance: none;
+    display: flex;
+    align-content: center;
+    justify-content: center;
+    font-size: 2rem;
+    padding: 10px;
+    border: 1px solid $maldives;
+    color: $white;
+    border-radius: 5px;
+    color: $white;
+}
 input[type="checkbox"].group-scoutcheckbox:checked{
     background-color: $maldives;
     color: $white;
+}
+.email-input{
+    border: 1px solid $black;
+    border-radius: 26px;
+    margin-bottom: 20px;
+    padding: 5px;
+}
+.email-text{
+    margin-bottom: 20px;
+}
+.phone-number-text{
+    margin-bottom: 20px;
+}
+.phone-number-input{
+    border: 1px solid $black;
+    border-radius: 26px;
+    margin-bottom: 20px;
+    padding: 5px;
 }
 
 .username-text{
