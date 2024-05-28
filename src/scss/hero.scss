@@ -2,7 +2,7 @@
     background-image: url(assets/img/obanshirecubscouts-bg.webp);
     background-size: cover;
     background-repeat: no-repeat;
-    height: 38vh;
+    height: 242px;
     width: 100%;
     display: flex;
     flex-direction: column;
@@ -15,19 +15,22 @@
     margin: 44px 15px 0;
     padding: 15px 0;
 }
+.hero-title{
+    color: $white;
+}
 
 @media (min-width: 426px) and (max-width: 834px){
     .hero-overlay{
         margin: 70px 15px 0;
     }
     .hero-bgimg{
-        height: 39vh;
+        height: 340px;
     }
 }
 
 @media (min-width: 835px) and (max-width: 1440px){
     .hero-bgimg{
-        height: 69vh;
+        height: 772px;
     }
     .hero-overlay{
         margin: 44px 15px 0;

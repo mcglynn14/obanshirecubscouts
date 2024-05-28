@@ -73,19 +73,7 @@ const Nav = () => {
               <li><Link to="/register" className="nav-links">Register</Link></li>
             </>
           )}
-          {token && userRole === 'parent' && (
-            <>
-              <li><Link to="/" className="nav-links">Home</Link></li>
-              <li><Link to="/gallery" className="nav-links">Gallery</Link></li>
-              <li><Link to="/contact" className="nav-links">Contact</Link></li>
-              <li><Link to="/localinfo" className="nav-links">Local information</Link></li>
-              <li><Link to="/generalinfo" className="nav-links">General information</Link></li>
-              <li><Link to="/parentdashboard" className="nav-links">Dashboard</Link></li>
-              <li><Link to="/badges" className="nav-links">Register to be helper</Link></li>
-              <li><button className="nav-links" onClick={logout}>Logout</button></li>
-            </>
-          )}
-          {token && userRole === 'helper' && (
+          {token && userRole.toLowerCase() === 'helper' && (
             <>
               <li><Link to="/" className="nav-links">Home</Link></li>
               <li><Link to="/gallery" className="nav-links">Gallery</Link></li>
@@ -97,7 +85,7 @@ const Nav = () => {
               <li><button className="nav-links" onClick={logout}>Logout</button></li>
             </>
           )}
-          {token && userRole === 'scoutLeader' && (
+          {token && userRole.toLowerCase() === 'scoutleader' && (
             <>
               <li><Link to="/" className="nav-links">Home</Link></li>
               <li><Link to="/gallery" className="nav-links">Gallery</Link></li>
@@ -109,7 +97,7 @@ const Nav = () => {
               <li><button className="nav-links" onClick={logout}>Logout</button></li>
             </>
           )}
-          {token && userRole === 'child' && (
+          {token && userRole.toLowerCase() === 'child' && (
             <>
               <li><Link to="/" className="nav-links">Home</Link></li>
               <li><Link to="/gallery" className="nav-links">Gallery</Link></li>
@@ -120,7 +108,7 @@ const Nav = () => {
             </>
           )}
           {/* Add a default case to handle unknown user roles */}
-          {token && !['parent', 'helper', 'scoutLeader', 'child'].includes(userRole) && (
+          {token && !['helper', 'scoutleader', 'child'].includes(userRole.toLowerCase()) && (
             <>
               <li><Link to="/" className="nav-links">Home</Link></li>
               <li><Link to="/gallery" className="nav-links">Gallery</Link></li>

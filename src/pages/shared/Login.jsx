@@ -43,7 +43,7 @@ const Login = () => {
                 navigate('/helperdashboard');
                 break;
               case 'scoutleader': // Combined 'scout-leader' and 'scoutleader' into one
-                navigate('/scoutleaderdashboard');
+                navigate('/leaderdashboard');
                 break;
               case 'child':
                 navigate('/dashboard');

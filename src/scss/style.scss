@@ -17,51 +17,60 @@ $transparent: transparent;
 $text-font: sans-serif;
 $heading-font: 'Figtree', sans-serif;
 
-*{
+* {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
-header{
+
+header {
   border-bottom: 2px solid #000;
 }
-a{
-    text-decoration: none;
-    color: $black;
-    padding-bottom: 25px;
+
+a {
+  text-decoration: none;
+  color: $black;
+  padding-bottom: 25px;
 }
-h1 h2 h3 h4 h5 h6{
-    font-family: $heading-font;
-    color: $black;
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: $heading-font;
+  color: $black;
 }
-p{
-    font-family: $text-font;
+
+p {
+  font-family: $text-font;
 }
-.btn{
-    font-family: $heading-font;
-    padding: 4px 60px;
-    border: 2px solid $spacebattleblue;
-    background-color: $spacebattleblue;
-    color: $white;
-    text-align: center;
-    cursor: pointer;
-    font-weight: 700;
-    border-radius: 15px;
-    transition: all 0.3s ease;
-    margin:0 auto 30px;
+
+.btn {
+  font-family: $heading-font;
+  padding: 4px 60px;
+  border: 2px solid $spacebattleblue;
+  background-color: $spacebattleblue;
+  color: $white;
+  text-align: center;
+  cursor: pointer;
+  font-weight: 700;
+  border-radius: 15px;
+  transition: all 0.3s ease;
+  margin: 0 auto 30px;
 }
-.btn:hover{
-    background-color: $transparent;
-    color: $spacebattleblue
+
+.btn:hover {
+  background-color: $transparent;
+  color: $spacebattleblue;
 }
-img{
-    width: 100%;
-    height: auto
+
+img {
+  width: 100%;
+  height: auto;
 }
-footer{
-    border-top: 2px solid $black;
-    padding: 20px 0;
+
+footer {
+  border-top: 2px solid $black;
+  padding: 20px 0;
 }
+
 @import './naviagtion.scss';
 
 @import './hero.scss';
@@ -90,19 +99,24 @@ footer{
 
 @import './cubscouts/dashboard.scss';
 
-@import './parent/parentdashboard.scss';
-
 @import './helper/helperdashboard.scss';
 
 @import './scoutleader/scoutleaderdashboard.scss';
 
 @import './cubscouts/games.scss';
 
-@import './cubscouts//uploadimage.scss';
+@import './cubscouts/uploadimage.scss';
 
 @import './cubscouts/yourbadges.scss';
 
-@import './parent/registerhelper.scss';
-
 @import './helper/viewhelpers.scss';
 
+@import './helper/applyfortraining.scss';
+
+@import './helper/events.scss';
+
+@import './scoutleader/managecubscouts.scss';
+
+@import './scoutleader/managegallery.scss';
+
+@import './scoutleader/manageevent.scss';

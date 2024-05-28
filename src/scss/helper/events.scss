@@ -1,0 +1,93 @@
+.hero-eventsoverlay{
+    padding: 53px 0;
+}
+.events-cards{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 45px;
+    margin: 30px 0;
+}
+.event{
+    display: flex;
+    flex-direction: column;
+    gap: 55px;
+}
+.event1-card{
+    text-align: center;
+    padding-top: 33px;
+    width: 227px;
+    height: 245px;
+    color: $white;
+    font-family: $heading-font;
+    background-color: $liberalistblue;
+    border-radius: 26px;
+}
+.event1-cardimg{
+    width: 80%;
+}
+.event1-date{
+    display: flex;
+    justify-content: center;
+}
+.fa-calendar-days{
+    margin-right: 7px;
+}
+.event1-time{
+    display: flex;
+    justify-content: center;
+}
+.fa-clock{
+    margin-right: 7px;
+}
+.event-cardtitle{
+    margin-bottom: 8px;
+}
+.event2-card{
+    text-align: center;
+    padding: 33px 0 15px;
+    width: 227px;
+    height: 245px;
+    color: $black;
+    font-family: $heading-font;
+    background-color: $pantoneyellow;
+    border-radius: 26px;
+}
+.event2-cardimg{
+    width: 80%;
+    height: 50%;
+}
+.event3-card{
+    text-align: center;
+    padding: 33px 0 15px;
+    width: 227px;
+    height: 245px;
+    color: $white;
+    font-family: $heading-font;
+    background-color: $maldives;
+    border-radius: 26px;
+}
+.event3-cardimg{
+    width: 80%;
+    height: 50%;
+}
+
+
+
+
+
+
+@media (min-width: 426px) and (max-width: 834px){
+    
+    
+}
+
+@media (min-width: 835px) and (max-width: 2560px){
+    .hero-eventsoverlay{
+        margin: 146px 15px 0;
+    }
+    .hero-overlay {
+        margin: 146px 15px 0;
+    }
+}

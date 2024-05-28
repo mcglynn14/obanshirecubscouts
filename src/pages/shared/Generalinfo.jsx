@@ -35,7 +35,7 @@ const Generalinfo = () => {
             <section className="disclosure">
                 <h2 className="disclosure-title">How to apply for helper</h2>
                 <p className="disclosure-text">you will find the form to apply to be a helper on the parent dashboard. This form will gather basic information about you, including your contact details, any previous experience with scouting or youth organizations and availability.</p>
-                
+                <Link className="btn btn-disclosurescot" to="https://www.mygov.scot/organisations/disclosure-scotland"><img className="disclosure-scot" src="assets/img/Disclosure_Scotland_logo.svg" alt="" /></Link>
             </section>
         </main>
         <Footer />

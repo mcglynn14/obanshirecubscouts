@@ -1,57 +1,254 @@
-const express = require('express'); // Express framework for building web applications
-const mongoose = require('mongoose'); // MongoDB object modeling tool
-const cors = require('cors'); // Cross-Origin Resource Sharing middleware
-const bcrypt = require('bcryptjs'); // Library for hashing passwords
-const jwt = require('jsonwebtoken'); // Library for generating and verifying JSON Web Tokens
-const User = require('./models/User'); // Import User model
+const express = require('express');
+const mongoose = require('mongoose');
+const cors = require('cors');
+const bcrypt = require('bcryptjs');
+const jwt = require('jsonwebtoken');
+const multer = require('multer');
+const fs = require('fs');
+const User = require('./models/User');
+const Event = require('./models/Event');
+const Image = require('./models/Image');
+require('dotenv').config();
+require('./models/Department');
 
-// Import required modules
-require('dotenv').config(); // Load environment variables from a .env file
-require('./models/Department'); // Import Department model
+const app = express();
+const PORT = process.env.PORT || 5001;
 
-const app = express(); // Create an instance of the Express application
-const PORT = process.env.PORT || 5001; // Set the port number
+app.use(express.json());
+app.use(cors({
+  origin: true,
+  credentials: true,
+}));
 
-app.use(express.json()); // Parse JSON request bodies
-app.use(cors()); // Enable CORS for all routes
-
-// MongoDB connection
-const MONGO_URI = process.env.MONGO_URI; // Get the MongoDB connection URI from environment variables
-// Connect to MongoDB using the URI
-mongoose.connect(MONGO_URI, {
+mongoose.connect(process.env.MONGO_URI, {
   useNewUrlParser: true,
   useUnifiedTopology: true,
 });
 
-// Event handler for successful MongoDB connection
-mongoose.connection.on('connected', () => { 
+mongoose.connection.on('connected', () => {
   console.log('Connected to MongoDB');
 });
 
-// Route handler for fetching user data
+const uploadDir = 'uploads';
+if (!fs.existsSync(uploadDir)) {
+  fs.mkdirSync(uploadDir, { recursive: true });
+  console.log(`Created ${uploadDir} directory`);
+}
+
+const storage = multer.diskStorage({
+  destination: function (req, file, cb) {
+    cb(null, uploadDir);
+  },
+  filename: function (req, file, cb) {
+    cb(null, Date.now() + '-' + file.originalname);
+  },
+});
+
+const upload = multer({ storage: storage });
+
+// Route to upload an image
+app.post('/upload', upload.single('file'), async (req, res) => {
+  try {
+    const newImage = new Image({
+      fileName: req.file.originalname,
+      filePath: req.file.path,
+    });
+
+    await newImage.save();
+    res.status(201).json({ message: 'File uploaded successfully', data: newImage });
+  } catch (error) {
+    res.status(500).json({ message: 'Error uploading file', error: error.message });
+  }
+});
+
+// Route to fetch all images for management purposes
+app.get('/api/images/manage', async (req, res) => {
+  try {
+    const images = await Image.find();
+    console.log('Images:', images); // Log images
+    res.status(200).json(images);
+  } catch (error) {
+    console.error('Error fetching images:', error);
+    res.status(500).json({ message: 'Error fetching images', error: error.message });
+  }
+});
+
+
+// Route to delete an image
+app.delete('/api/images/:id', async (req, res) => {
+  try {
+    const { id } = req.params;
+    const image = await Image.findByIdAndDelete(id);
+    if (image) {
+      fs.unlinkSync(image.filePath);
+    }
+    res.status(200).json({ message: 'Image deleted successfully' });
+  } catch (error) {
+    res.status(500).json({ message: 'Error deleting image', error: error.message });
+  }
+});
+
+// Route to toggle the visibility of an image
+app.patch('/api/images/:id/toggle-hide', async (req, res) => {
+  try {
+    const image = await Image.findById(req.params.id);
+    if (image) {
+      image.hidden = !image.hidden;
+      await image.save();
+      res.status(200).json({ message: 'Image visibility toggled successfully' });
+    } else {
+      res.status(404).json({ message: 'Image not found' });
+    }
+  } catch (error) {
+    res.status(500).json({ message: 'Error toggling image visibility', error: error.message });
+  }
+});
+
+// Update the route to fetch images
+app.get('/gallery', async (req, res) => {
+  try {
+    const images = await Image.find();
+    res.status(200).json(images);
+  } catch (error) {
+    res.status(500).json({ message: 'Error fetching images', error: error.message });
+  }
+});
+
+app.get('/api/gallery/manage', async (req, res) => {
+  try {
+    const events = await Event.find();
+    res.json(events);
+  } catch (error) {
+    console.error('Error fetching events:', error);
+    res.status(500).json({ error: 'Internal Server Error' });
+  }
+});
+
+// Delete an event
+app.delete('/api/gallery/:id', async (req, res) => {
+  try {
+    const { id } = req.params;
+    await Event.findByIdAndDelete(id);
+    res.status(200).json({ message: 'Event deleted successfully' });
+  } catch (error) {
+    console.error('Error deleting event:', error);
+    res.status(500).json({ error: 'Internal Server Error' });
+  }
+});
+
+// Toggle event visibility
+app.patch('/api/gallery/:id/toggle-hide', async (req, res) => {
+  try {
+    const event = await Event.findById(req.params.id);
+    event.hidden = !event.hidden;
+    await event.save();
+    res.status(200).json({ message: 'Event visibility toggled successfully' });
+  } catch (error) {
+    console.error('Error toggling event visibility:', error);
+    res.status(500).json({ error: 'Internal Server Error' });
+  }
+});
+
+// User registration route
+app.post('/api/register', async (req, res) => {
+  try {
+    const {
+      name,
+      email,
+      password,
+      dateOfBirth,
+      username,
+      phoneNumber,
+      childChecked,
+      cubChecked,
+      scoutChecked,
+      helperChecked
+    } = req.body;
+
+    const existingUser = await User.findOne({ username });
+    if (existingUser) {
+      return res.status(400).json({ error: 'User already exists' });
+    }
+
+    const hashedPassword = await bcrypt.hash(password, 10);
+
+    const userType = [
+      childChecked ? 'child' : '',
+      helperChecked ? 'helper' : ''
+    ].filter(Boolean);
+
+    const newUser = new User({
+      name,
+      email,
+      password: hashedPassword,
+      dob: dateOfBirth,
+      username,
+      phoneNumber,
+      userType,
+      cubChecked,
+      scoutChecked
+    });
+
+    await newUser.save();
+
+    res.status(201).json({ message: 'User registered successfully' });
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ error: 'Internal Server Error' });
+  }
+});
+
+// User login route
+app.post('/api/login', async (req, res) => {
+  try {
+    const { username, password } = req.body;
+    const user = await User.findOne({ username });
+
+    if (!user) {
+      return res.status(401).json({ error: 'Invalid username or password' });
+    }
+
+    const passwordMatch = await bcrypt.compare(password, user.password);
+
+    if (!passwordMatch) {
+      return res.status(401).json({ error: 'Invalid username or password' });
+    }
+
+    const tokenPayload = {
+      userId: user._id,
+      usertype: user.usertype
+    };
+
+    const token = jwt.sign(tokenPayload, 'your-secret-key', {
+      expiresIn: '1h',
+    });
+
+    res.json({ token, usertype: user.usertype });
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ error: 'Internal server error' });
+  }
+});
+
+// Fetch users
 app.get('/api/users', async (req, res) => {
   try {
-    // Extract the token from the request headers
     const token = req.headers.authorization?.split(' ')[1];
 
     if (!token) {
       return res.status(401).json({ error: 'Unauthorized: No token provided' });
     }
 
-    // Verify the token
     jwt.verify(token, 'your-secret-key', async (err, decoded) => {
       if (err) {
         return res.status(401).json({ error: 'Unauthorized: Invalid token' });
       }
       const user = await User.findById(decoded.userId).populate('usertype');
 
-      // The decoded.userId should match the structure used in jwt.sign during login
-
       if (!user) {
         return res.status(404).json({ error: 'User not found' });
       }
 
-      // Return data only for the authenticated user
       const formattedUser = {
         UserID: user._id,
         username: user.username,
@@ -63,9 +260,7 @@ app.get('/api/users', async (req, res) => {
         dob: user.dob,
         childagegroup: user.childagegroup,
         Parentrelationship: user.parentrelationship
-    };
-    
-    
+      };
 
       res.json(formattedUser);
     });
@@ -75,137 +270,76 @@ app.get('/api/users', async (req, res) => {
   }
 });
 
-// Route handler for user registration
-app.post('/api/register', async (req, res) => {
-    try {
-      const { name, email, password, dateOfBirth, username, childChecked, parentChecked, cubChecked, scoutChecked } = req.body;
-  
-      // Check if the user already exists
-      const existingUser = await User.findOne({ username });
-      if (existingUser) {
-        return res.status(400).json({ error: 'User already exists' });
-      }
-  
-      // Hash the password
-      const hashedPassword = await bcrypt.hash(password, 10);
-  
-      // Create a new user
-      const newUser = new User({
-        name,
-        email,
-        password: hashedPassword,
-        dob: dateOfBirth,
-        username,
-        childagegroup: childChecked ? 'child' : null,
-        parentrelationship: parentChecked ? 'helper' : null,
-        cubChecked,
-        scoutChecked,
-        weekdaysChecked,
-        Evenings
-      });
-  
-      // Save the user to the database
-      await newUser.save();
-  
-      res.status(201).json({ message: 'User registered successfully' });
-    } catch (error) {
-      console.error(error);
-      res.status(500).json({ error: 'Internal Server Error' });
-    }
-  });
-  
-
-// Route handler for user login
-app.post('/api/login', async (req, res) => {
-    try {
-        const { username, password } = req.body;
-        const user = await User.findOne({ username });
-
-        console.log('Received request body:', req.body);
-
-        if (!user) {
-            return res.status(401).json({ error: 'Invalid username or password' });
-        }
-
-        const passwordMatch = await bcrypt.compare(password, user.password);
-
-        if (!passwordMatch) {
-            return res.status(401).json({ error: 'Invalid username or password' });
-        }
-
-        // Include userId and usertype in the token payload
-        const tokenPayload = {
-            userId: user._id,
-            usertype: user.usertype // Assuming 'usertype' field exists in the User model
-        };
-
-        const token = jwt.sign(tokenPayload, 'your-secret-key', {
-            expiresIn: '1h',
-        });
-
-        // Send token and usertype in the response
-        res.json({ token, usertype: user.usertype });
-    } catch (error) {
-        console.error(error);
-        res.status(500).json({ error: 'Internal server error' });
-    }
-});
-
-
-
-// Route handler for updating user profile
-app.put('/api/updateProfile', async (req, res) => {
+// Fetch helpers
+app.get('/api/gethelpers', async (req, res) => {
   try {
-    // Extract the token from the request headers
-    const token = req.headers.authorization?.split(' ')[1];
-
-    if (!token) {
-      return res.status(401).json({ error: 'Unauthorized: No token provided' });
-    }
-
-    // Verify the token
-    jwt.verify(token, 'your-secret-key', async (err, decoded) => {
-      if (err) {
-        return res.status(401).json({ error: 'Unauthorized: Invalid token' });
-      }
-
-      const { fullName, dob, profileImage } = req.body;
-
-      // Find the user by decoded userId
-      const user = await User.findById(decoded.userId);
-
-      if (!user) {
-        return res.status(404).json({ error: 'User not found' });
-      }
-
-      // Update user profile fields if provided
-      if (fullName) {
-        const [forename, surname] = fullName.split(' ');
-        user.forename = forename;
-        user.surname = surname;
-      }
-
-      if (dob) {
-        user.dob = dob;
-      }
-
-      if (profileImage) {
-        // Handle profile image update (if needed)
-        // For example, save the image to a storage service and update the user's profileImage field
-      }
-
-      // Save the updated user
-      await user.save();
-
-      res.json({ message: 'Profile updated successfully' });
-    });
-  } catch (error) {
-    console.error(error);
+    const helpers = await User.find({ usertype: 'Helper' });
+    res.json(helpers);
+  } catch (err) {
+    console.error('Error fetching helpers:', err);
     res.status(500).json({ error: 'Internal Server Error' });
   }
 });
 
-// Start server
+// Fetch cub scouts
+app.get('/api/getcubscouts', async (req, res) => {
+  try {
+    const child = await User.find({ usertype: 'child' });
+    res.json(child);
+  } catch (err) {
+    console.error('Error fetching helpers:', err);
+    res.status(500).json({ error: 'Internal Server Error' });
+  }
+});
+
+// Fetch visible events
+app.get('/api/events', async (req, res) => {
+  try {
+    const events = await Event.find({ hidden: false });
+    res.json(events);
+  } catch (error) {
+    console.error('Error fetching events:', error);
+    res.status(500).json({ error: 'Internal Server Error' });
+  }
+});
+
+// Fetch all events for management purposes
+app.get('/api/events/manage', async (req, res) => {
+  try {
+    const events = await Event.find();
+    res.json(events);
+  } catch (error) {
+    console.error('Error fetching events:', error);
+    res.status(500).json({ error: 'Internal Server Error' });
+  }
+});
+
+// Delete an event
+app.delete('/api/events/:id', async (req, res) => {
+  try {
+    const { id } = req.params;
+    await Event.findByIdAndDelete(id);
+    res.status(200).json({ message: 'Event deleted successfully' });
+  } catch (error) {
+    console.error('Error deleting event:', error);
+    res.status(500).json({ error: 'Internal Server Error' });
+  }
+});
+
+// Toggle event visibility
+app.patch('/api/events/:id/toggle-hide', async (req, res) => {
+  try {
+    const event = await Event.findById(req.params.id);
+    event.hidden = !event.hidden;
+    await event.save();
+    res.status(200).json({ message: 'Event visibility toggled successfully' });
+  } catch (error) {
+    console.error('Error toggling event visibility:', error);
+    res.status(500).json({ error: 'Internal Server Error' });
+  }
+});
+
+// Start the server
 app.listen(PORT, () => {
   console.log(`Server is running on port ${PORT}`);
 });

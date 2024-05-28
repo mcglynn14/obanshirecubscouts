@@ -14,7 +14,6 @@ const Register = () => {
         username: '',
         phoneNumber: '', // Added phone number field
         childChecked: false,
-        parentChecked: false,
         cubChecked: false,
         scoutChecked: false,
         helperChecked: false // Added helper checkbox field
@@ -29,7 +28,6 @@ const Register = () => {
                 ...values,
                 userType: [
                     values.childChecked ? 'child' : '',
-                    values.parentChecked ? 'parent' : '',
                     values.helperChecked ? 'helper' : '',
                 ].filter(Boolean), // Filter out empty strings
             });
@@ -68,10 +66,6 @@ const Register = () => {
                             <label htmlFor="childCheckbox" className="child-text">Child</label>
                             <input type="checkbox" name="childChecked" id="childCheckbox" className="child-checkbox" onChange={handleInputChange} checked={values.childChecked} />
                         </div>
-                        <div className="parent-check">
-                            <label htmlFor="parentCheckbox" className="parent-text">Parent</label>
-                            <input type="checkbox" name="parentChecked" id="parentCheckbox" className="parent-checkbox" onChange={handleInputChange} checked={values.parentChecked} />
-                        </div>
                         <div className="helper-check"> {/* Added helper checkbox */}
                             <label htmlFor="helperCheckbox" className="helper-text">Helper</label>
                             <input type="checkbox" name="helperChecked" id="helperCheckbox" className="helper-checkbox" onChange={handleInputChange} checked={values.helperChecked} />
@@ -82,7 +76,7 @@ const Register = () => {
                     <label htmlFor="dateOfBirthInput" className="dateofbirth-text">Date of birth</label>
                     <input type="date" id="dateOfBirthInput" className="dateofbirth-input" name="dateOfBirth" onChange={handleInputChange} value={values.dateOfBirth} />
                     
-                    {!values.parentChecked && (
+                    {!values.helperChecked && (
                         <>
                             <label htmlFor="groupCubCheckbox" className="group-text">Group</label>
                             <div className="group-check">
@@ -98,7 +92,7 @@ const Register = () => {
                         </>
                     )}
                     
-                    {values.parentChecked && (
+                    {values.helperChecked && (
                         <>
                             <label htmlFor="emailInput" className="email-text">Email</label>
                             <input type="email" className="email-input" name="email" id="emailInput" onChange={handleInputChange} value={values.email} />
