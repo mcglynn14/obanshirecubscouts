@@ -63,3 +63,20 @@
 .map iframe{
     width: 281px;
 }
+@media (min-width: 426px) and (max-width: 834px){
+    .contact-forminput{
+        width: 100%;
+    }
+    .map iframe{
+        width: 447px;
+    }
+}
+
+@media (min-width: 835px) and (max-width: 2000px){
+    .contact-forminput{
+        width: 100%;
+    }
+    .map iframe{
+        width: 647px;
+    }
+}

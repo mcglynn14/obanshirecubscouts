@@ -1,4 +1,7 @@
-# React + Vite
+# React + Vite ObanshireCubScouts
+
+project repo(https://github.com/mcglynn14/obanshirecubscouts)
+profile(https://github.com/mcglynn14)
 
 This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
 

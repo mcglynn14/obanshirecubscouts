@@ -1,0 +1,33 @@
+.hero-localknowlegebadgeoverlay{
+    padding: 53px 0;
+}
+.localknowlegebadge{
+    margin: 30px 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+}
+.localknowlegecubbadge-img{
+    width: 70%;
+}
+.localknowlegebadge-text{
+    margin-top: 20px;
+    padding:0 16px;
+}
+
+
+
+@media (min-width: 426px) and (max-width: 834px){
+    
+    
+}
+
+@media (min-width: 835px) and (max-width: 2560px){
+    .hero-localknowlegebadgeoverlay{
+        margin: 146px 15px 0;
+    }
+    .hero-overlay {
+        margin: 146px 15px 0;
+    }
+}

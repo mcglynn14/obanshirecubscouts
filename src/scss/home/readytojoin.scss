@@ -21,3 +21,19 @@
     width: 70%;
     margin: 0 auto 20px;
 }
+@media (min-width: 426px) and (max-width: 834px){
+    .readytojoin-img {
+        width: 35%;
+        margin: 0 auto;
+        padding-bottom: 20px;
+    }
+}
+
+@media (min-width: 835px) and (max-width: 2000px){
+    .readytojoin-img {
+        height: 400px;
+        width: 43%;
+        margin: 0 auto;
+        padding-bottom: 20px;
+    }
+}

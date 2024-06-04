@@ -35,9 +35,7 @@ a {
 
 h1, h2, h3, h4, h5, h6 {
   font-family: $heading-font;
-  color: $black;
 }
-
 p {
   font-family: $text-font;
 }
@@ -109,6 +107,10 @@ footer {
 
 @import './cubscouts/yourbadges.scss';
 
+@import './cubscouts/matchinggame.scss';
+
+@import './cubscouts/cubscoutquiz.scss';
+
 @import './helper/viewhelpers.scss';
 
 @import './helper/applyfortraining.scss';
@@ -120,3 +122,29 @@ footer {
 @import './scoutleader/managegallery.scss';
 
 @import './scoutleader/manageevent.scss';
+
+@import './badges/communicatorcub-badge.scss';
+
+@import './badges/equestiancub-badge.scss';
+
+@import './badges/firesafetycub-badge.scss';
+
+@import './badges/localknowlegecub-badge.scss';
+
+@import './badges/naturalistcub-badge.scss';
+
+@import './badges/roadsafetycub-badge.scss';
+
+@import './badges/wateractivitescub-badge.scss';
+
+@import './badges/camperscoutbadge.scss';
+
+@import './badges/communicatorscoutbadge.scss';
+
+@import './badges//equestrianscoutbadge.scss';
+
+@import './badges//emergencyaidbadge.scss';
+
+@import './badges//nauticalskillsbadge.scss';
+
+@import './badges/navigatorbadge.scss';

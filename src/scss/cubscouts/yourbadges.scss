@@ -9,8 +9,9 @@
     flex-wrap: wrap;
     gap: 30px;
 }
-.card-3{
-    mix-blend-mode: luminosity;
+.not-achieved{
+    filter: grayscale(100%);
+    opacity: 0.5;
 }
 
 
@@ -22,7 +23,7 @@
 
 @media (min-width: 835px) and (max-width: 2560px){
     .hero-yourbadgesoverlay{
-        margin: 146px 15px 0;
+        margin: 85px 15px 0;
     }
     .hero-overlay {
         margin: 146px 15px 0;

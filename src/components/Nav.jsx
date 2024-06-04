@@ -8,6 +8,7 @@ const Nav = () => {
   const [token, setToken] = useState(localStorage.getItem('token'));
   const [userRole, setUserRole] = useState(localStorage.getItem('userRole'));
 
+  // Function to handle logout
   const logout = () => {
     localStorage.removeItem('token');
     localStorage.removeItem('userRole');
@@ -17,6 +18,7 @@ const Nav = () => {
   };
 
   useEffect(() => {
+    // Function to handle navbar toggle click
     const handleNavbarToggleClick = () => {
       const mainnav = document.getElementById('mobile-nav');
       const navOpen = document.getElementById('open-toggle');
@@ -32,6 +34,7 @@ const Nav = () => {
       navbarToggle.addEventListener('click', handleNavbarToggleClick);
     }
 
+    // Cleanup function to remove event listener
     return () => {
       if (navbarToggle) {
         navbarToggle.removeEventListener('click', handleNavbarToggleClick);
@@ -43,6 +46,11 @@ const Nav = () => {
   useEffect(() => {
     console.log(`User role is: ${userRole}`);
   }, [userRole]);
+
+  // Function to get user role in lowercase
+  const getRoleLowerCase = () => {
+    return userRole ? userRole.toLowerCase() : '';
+  };
 
   return (
     <>
@@ -61,6 +69,7 @@ const Nav = () => {
       </div>
       <nav>
         <ul className="ul-links" id="mobile-nav">
+          {/* Render navigation links based on user role */}
           {!token && (
             <>
               <li><Link to="/" className="nav-links">Home</Link></li>
@@ -73,7 +82,7 @@ const Nav = () => {
               <li><Link to="/register" className="nav-links">Register</Link></li>
             </>
           )}
-          {token && userRole.toLowerCase() === 'helper' && (
+          {token && getRoleLowerCase() === 'helper' && (
             <>
               <li><Link to="/" className="nav-links">Home</Link></li>
               <li><Link to="/gallery" className="nav-links">Gallery</Link></li>
@@ -85,7 +94,7 @@ const Nav = () => {
               <li><button className="nav-links" onClick={logout}>Logout</button></li>
             </>
           )}
-          {token && userRole.toLowerCase() === 'scoutleader' && (
+          {token && getRoleLowerCase() === 'scoutleader' && (
             <>
               <li><Link to="/" className="nav-links">Home</Link></li>
               <li><Link to="/gallery" className="nav-links">Gallery</Link></li>
@@ -97,7 +106,7 @@ const Nav = () => {
               <li><button className="nav-links" onClick={logout}>Logout</button></li>
             </>
           )}
-          {token && userRole.toLowerCase() === 'child' && (
+          {token && getRoleLowerCase() === 'child' && (
             <>
               <li><Link to="/" className="nav-links">Home</Link></li>
               <li><Link to="/gallery" className="nav-links">Gallery</Link></li>
@@ -108,7 +117,7 @@ const Nav = () => {
             </>
           )}
           {/* Add a default case to handle unknown user roles */}
-          {token && !['helper', 'scoutleader', 'child'].includes(userRole.toLowerCase()) && (
+          {token && !['helper', 'scoutleader', 'child'].includes(getRoleLowerCase()) && (
             <>
               <li><Link to="/" className="nav-links">Home</Link></li>
               <li><Link to="/gallery" className="nav-links">Gallery</Link></li>

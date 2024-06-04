@@ -28,12 +28,13 @@
     }
 }
 
-@media (min-width: 835px) and (max-width: 1440px){
+@media (min-width: 835px) and (max-width: 2000px){
     .hero-bgimg{
-        height: 772px;
+        height: 432px;
     }
     .hero-overlay{
-        margin: 44px 15px 0;
+        margin: 85px 15px 0;
+        padding: 74px 0;
     }
     .gallery-images .gallery-imgs{
         width: 33.33%;

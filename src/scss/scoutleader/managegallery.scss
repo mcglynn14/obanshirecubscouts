@@ -2,9 +2,141 @@
     padding: 53px 0;
 }
 
+.images-grid{
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin-top: 20px;
+    margin: 20px 0 30px;
+    gap: 33px;
+}
+.image-card{
+    width: 300px;
+}
+.image-card img{
+    height: auto;
+    padding: 0 15px;
+}
+.image-card-4 img, .image-card-5 img, .image-card-7 img{
+    height: 150px;
+}
+.image-card-1 img, .image-card-2 img, .image-card-3 img, .image-card-6 img, .image-card-8 img, .image-card-9 img{
+    margin-bottom: 8px;
+}
+.image-card-1{
+    text-align: center;
+    padding-top: 33px;
+    width: 227px;
+    height: 295px;
+    color: $white;
+    font-family: $heading-font;
+    background-color: $liberalistblue;
+    border-radius: 26px;
+}
 
+.image-card-2{
+    text-align: center;
+    padding-top: 33px;
+    width: 227px;
+    height: 295px;
+    color: $white;
+    font-family: $heading-font;
+    background-color: $pantoneyellow;
+    border-radius: 26px;
+}
 
+.image-card-3{
+    text-align: center;
+    padding-top: 33px;
+    width: 227px;
+    height: 295px;
+    color: $black;
+    font-family: $heading-font;
+    background-color: $maldives; 
+    border-radius: 26px;
+}
 
+.image-card-4{
+    text-align: center;
+    padding-top: 33px;
+    width: 227px;
+    height: 295px;
+    color: $white;
+    font-family: $heading-font;
+    background-color: $verditer;
+    border-radius: 26px;
+}
+
+.image-card-5{
+    text-align: center;
+    padding-top: 33px;
+    width: 227px;
+    height: 295px;
+    color: $white;
+    font-family: $heading-font;
+    background-color: $orangered;
+    border-radius: 26px;
+}
+.image-card-6{
+    text-align: center;
+    padding-top: 33px;
+    width: 227px;
+    height: 295px;
+    color: $white;
+    font-family: $heading-font;
+    background-color: $spacebattleblue;
+    border-radius: 26px;
+}
+.image-card-7{
+    text-align: center;
+    padding-top: 33px;
+    width: 227px;
+    height: 295px;
+    color: $white;
+    font-family: $heading-font;
+    background-color: $green;
+    border-radius: 26px;
+}
+.image-card-8{
+    text-align: center;
+    padding-top: 33px;
+    width: 227px;
+    height: 295px;
+    color: $white;
+    font-family: $heading-font;
+    background-color: $liberalistblue;
+    border-radius: 26px;
+}
+.image-card-9{
+    text-align: center;
+    padding-top: 33px;
+    width: 227px;
+    height: 295px;
+    color: $white;
+    font-family: $heading-font;
+    background-color: $pantoneyellow;
+    border-radius: 26px;
+}
+.btn-image-delete{
+    background-color: $toriired;
+    color: $white;
+    border: 2px solid $black;
+}
+.btn-image-delete:hover{
+    background-color: $toriired;
+    color: $white;
+    border: none;
+}
+.btn-image-hide{
+    background-color: $forrestride;
+    color: $white;
+    border: none;
+}
+.btn-image-hide:hover{
+    background-color: $forrestride;
+    color: $white;
+    border: none;
+}
 
 
 @media (min-width: 426px) and (max-width: 834px){
@@ -14,9 +146,10 @@
 
 @media (min-width: 835px) and (max-width: 2560px){
     .hero-managegalleryoverlay{
-        margin: 146px 15px 0;
+        margin: 85px 15px 0;
+        padding: 53px 0;
     }
     .hero-overlay {
-        margin: 146px 15px 0;
+        margin: 85px 15px 0;
     }
 }

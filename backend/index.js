@@ -116,8 +116,8 @@ app.get('/gallery', async (req, res) => {
 
 app.get('/api/gallery/manage', async (req, res) => {
   try {
-    const events = await Event.find();
-    res.json(events);
+    const manageImage = await Image.find();
+    res.json(manageImage);
   } catch (error) {
     console.error('Error fetching events:', error);
     res.status(500).json({ error: 'Internal Server Error' });
@@ -128,7 +128,7 @@ app.get('/api/gallery/manage', async (req, res) => {
 app.delete('/api/gallery/:id', async (req, res) => {
   try {
     const { id } = req.params;
-    await Event.findByIdAndDelete(id);
+    await Image.findByIdAndDelete(id);
     res.status(200).json({ message: 'Event deleted successfully' });
   } catch (error) {
     console.error('Error deleting event:', error);
@@ -139,9 +139,9 @@ app.delete('/api/gallery/:id', async (req, res) => {
 // Toggle event visibility
 app.patch('/api/gallery/:id/toggle-hide', async (req, res) => {
   try {
-    const event = await Event.findById(req.params.id);
-    event.hidden = !event.hidden;
-    await event.save();
+    const manageImage = await Image.findById(req.params.id);
+    Image.hidden = !Image.hidden;
+    await manageImage.save();
     res.status(200).json({ message: 'Event visibility toggled successfully' });
   } catch (error) {
     console.error('Error toggling event visibility:', error);
@@ -216,7 +216,7 @@ app.post('/api/login', async (req, res) => {
 
     const tokenPayload = {
       userId: user._id,
-      usertype: user.usertype
+      usertype: user.userType
     };
 
     const token = jwt.sign(tokenPayload, 'your-secret-key', {

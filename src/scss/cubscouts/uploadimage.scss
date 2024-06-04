@@ -5,6 +5,7 @@
     margin: 30px 0;
     display: flex;
     justify-content: center;
+    flex-direction: column;
     align-items: center;
     flex-wrap: wrap;
 
@@ -23,7 +24,7 @@
 
 @media (min-width: 835px) and (max-width: 2560px){
     .hero-uploadimageoverlay{
-        margin: 146px 15px 0;
+        margin: 85px 15px 0;
     }
     .hero-overlay {
         margin: 146px 15px 0;
